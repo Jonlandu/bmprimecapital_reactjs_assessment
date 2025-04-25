@@ -1,0 +1,22 @@
+
+.layout{
+  padding: 0 4rem
+}
+
+.logo-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 3rem;
+  /*padding: 1.5em;*/
+
+}
+
+
+
+.read-the-docs {
+  color: #888;
+}
