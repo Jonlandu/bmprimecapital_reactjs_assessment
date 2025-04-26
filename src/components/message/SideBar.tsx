@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
-
-interface Conversation {
-  id: number;
-  selected: boolean;
-  date: string;
-  lastMessage: string;
-}
-
-interface Message {
-  sender: "user" | "bot";
-  text: string;
-}
+import { Conversation, Message } from "../../types/types";
+import ConversationCard from "./Conversation";
 
 export const SideBar = () => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -22,7 +12,7 @@ export const SideBar = () => {
       const mockData: Conversation[] = [
         {
           id: 1,
-          selected: true,
+          selected: false,
           date: "today",
           lastMessage: "Hey, how are you?",
         },
@@ -62,22 +52,12 @@ export const SideBar = () => {
     return conversations
       .filter((conv) => conv.date === date)
       .map((conversation) => (
-        <li
+        <ConversationCard
           key={conversation.id}
-          className={`py-3 px-4 border-b border-gray-50 cursor-pointer rounded-lg flex items-center justify-between ${
-            selectedConversation?.id === conversation.id
-              ? "bg-blue-100 text-blue-700 font-semibold"
-              : "hover:bg-gray-100"
-          }`}
-          onClick={() => setSelectedConversation(conversation.id)}
-        >
-          <div>
-            <p className="text-xs text-gray-500">{conversation.lastMessage}</p>
-          </div>
-          {selectedConversation?.id === conversation.id && (
-            <i className="fa-solid fa-ellipsis text-blue-500"></i>
-          )}
-        </li>
+          conversation={conversation}
+          selectedConversation={selectedConversation?.id.toString()}
+          setSelectedConversation={setSelectedConversation}
+        />
       ));
   };
 

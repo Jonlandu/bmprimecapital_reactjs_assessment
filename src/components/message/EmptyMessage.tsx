@@ -2,7 +2,7 @@ import icon from "/assets/icon.jpeg";
 
 const EmptyMessage = () => {
   return (
-    <div className="flex-1 flex items-center justify-center">
+    <div className="h-full flex items-center justify-center">
       <div className="text-center">
         <div className="flex  gap-x-2 items-center mb-4">
           <img src={icon} className="w-15 " alt="icon" />
